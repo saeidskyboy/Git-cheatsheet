@@ -60,4 +60,6 @@ it contains changes that will go into the next commit
 | `git remote -v`                           | List all remote repositories with more details |
 | `git remote remove  <remote_name>`        | Removes a link to a remote repository |
 | `git remote remove  origin`               | Removes the link to the remote repository named "origin" |
-| `git push  <remote_name> <branch>`        | Upload a branch of your git version history to your remote repository |
+| `git push -u <remote_name> <branch>`        | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
+
+|
