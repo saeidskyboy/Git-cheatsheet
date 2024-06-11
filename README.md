@@ -54,12 +54,11 @@ it contains changes that will go into the next commit
 ## Uploading Code to GitHub 
 | Command | Description |
 | - | - |
-| `git config  --global credential.username  <username>`    | Configure our GitHub username so we can get access to our Github repository |
+| git config  --global credential.username  <username>    | NOT recommended |
+| `git config --global credential.helper store`             | GitHub now recommends using a credential helper to manage authentication. This provides a more secure and streamlined way to store your credentials => https://github.com/settings/tokens => create a token then use it instead of password |
 | `git remote add  <remote_name> <url>` | Link a local repository to a remote repository and give a name for this link. i.e. ![Screen Shot 2024-06-10 at 22 10 55](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/65c6f4d9-b523-401d-85f8-a14c90b13c9d) links a local repository to a GitHub repository (located at the url https://github.com/saeidskyboy/DevOps) and gives it a name "update5" |
 | `git remote`                              | List all remote repositories that are linked |
 | `git remote -v`                           | List all remote repositories with more details |
 | `git remote remove  <remote_name>`        | Removes a link to a remote repository |
 | `git remote remove  origin`               | Removes the link to the remote repository named "origin" |
 | `git push -u <remote_name> <branch>`        | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
-
-|
