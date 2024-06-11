@@ -31,12 +31,11 @@ Version history = commit history
 ## Staging Area
 it contains changes that will go into the next commit
 
-| working => staging | staging => commit history | staging => working |
-| - | - | - |
-| `git add  .` | `git commit  -m "message"` | `git reset  <file/folder>` |
-| | `git reset  file` | |
-| | `git reset  folder/` | | |
-| | `git reset  .` | |
+| working => staging | staging => commit history | staging => working | working => remove the  changes |
+| - | - | - | - |
+| `git add  file` | `git commit -m "message"` | `git reset  file` | `git checkout --  file` |
+| `git add  folder/` | |`git reset  folder/` | `git checkout --  folder/` |
+| `git add  .` | |`git reset  .` | `git checkout --  .` |
 
 ## Staged Changes
 | Command | Description |
@@ -51,7 +50,8 @@ it contains changes that will go into the next commit
 | `git clean -f\|--force -d`                | Recursively remove untracked files from the working tree |
 | `git clean -f\|--force -d -x`             | Recursively remove untracked and ignored files from the working tree |
 
-## Uploading Code to GitHub 
+## Uploading Code to GitHub
+Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your large files (files more than 100 Mb), it will replace large files with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise
 | Command | Description |
 | - | - |
 | git config  --global credential.username  <username>    | NOT recommended |
@@ -61,4 +61,6 @@ it contains changes that will go into the next commit
 | `git remote -v`                           | List all remote repositories with more details |
 | `git remote remove  <remote_name>`        | Removes a link to a remote repository |
 | `git remote remove  origin`               | Removes the link to the remote repository named "origin" |
-| `git push -u <remote_name> <branch>`        | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
+| `git lfs track .`                         | this will track all files in current directory |
+| `git push -u <remote_name> <branch>`      | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
+| `git push <remote name> <commit name (main/master/HEAD)> --set-upstream` | Sets up a shortcut for this branch and remote repository Next time you are on the  main branch and you run  git push  , it will automatically push the main  branch to  origin ![Screen Shot 2024-06-11 at 15 10 38](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/e8a8e426-796b-45c7-bb83-ef62b3ef59a8), with this next time we only need to run `git push` and it memorize "origin mster" and automatically will push it.
