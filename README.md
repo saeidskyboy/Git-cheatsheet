@@ -17,8 +17,27 @@ Version history = commit history
 | `git commit  -m "message"`                         | Creates a commit with a message attached |
 | `git commit  -m "message" --amend`                 | Update previous commit instead of creating new one |
 | `git log`                                          | View the commit history (current and previous versions but next versions, if we role back to a version. i.e. we have 5 versions and we want to role back to version 3 (by `git checkout <commit hash>`, so with `git log` we only will see version 1,2 and 3 |
-| `git log  --all`                                   | Show all commits (not just current branch)|
-| `git log  --all --graph`                           | Show branching visually in the command line|
+
+## Compare
+| Command | Description |
+| - | - |
+| `git diff`                                | See difference between working area and current branch |
+| `git diff HEAD HEAD~2`                    | See difference between te current commit and two previous commits |
+| `git diff main other`                     | See difference between two branches |
+
+## View
+| Command | Description |
+| - | - |
+| `git log`                                 | See commit list |
+| `git log --patch`                         | See commit list and line changes |
+| `git log --decorate --graph --oneline`    | See commit visualization |
+| `git log --grep skyboy`                   | See commits with "skyboy" in the message |
+| `git show HEAD`                           | Show the current commit |
+| `git show HEAD^` or `git show HEAD~1`     | Show the previous commit |
+| `git show HEAD^^` or `git show HEAD~2`    | Show the commit going back two commits |
+| `git show main`                           | Show the last commit in a branch |
+| `git show 5720fdf`                        | Show named commit |
+| `git blame file.txt`                      | See who changed each line and when |
 
    
 ## Configure Name & Email for commits
@@ -64,3 +83,14 @@ Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your
 | `git lfs track .`                         | this will track all files in current directory |
 | `git push -u <remote_name> <branch>`      | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
 | `git push <remote name> <commit name (main/master/HEAD)> --set-upstream` | Sets up a shortcut for this branch and remote repository Next time you are on the  main branch and you run  git push  , it will automatically push the main  branch to  origin ![Screen Shot 2024-06-11 at 15 10 38](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/e8a8e426-796b-45c7-bb83-ef62b3ef59a8), with this next time we only need to run `git push` and it memorize "origin mster" and automatically will push it.
+
+## Branches
+| Command | Description |
+| - | - |
+| `git branch skyboy`                            | Create a new branch with name "skyboy"|
+| `git branch -d skyboy`                         | Deletes "skyboy" branch |
+| `git switch last_sky`                          | Switch to branch "last_sky"|
+| `git switch -c\|--create lastjump`             | Create "lastjump" branch and will switch to it |
+| `git restore skyboy.js`                        | Undo all changes on the skyboy.js file |
+| `git checkout skyboy.js`                       | Undo all changes on the skyboy.js file |
+| `git merge lastjump`                           | Merge  "lastjump" branch into current branch |
