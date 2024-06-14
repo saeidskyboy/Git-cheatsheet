@@ -47,7 +47,7 @@ Version history = commit history
 | `git config --global user.name "skyboy"`                       | Set user name |
 | `git config --globall user.email "skyboy@example.com"`         | set user email |
 
-## Staging Area
+## Switch between stage/working areas
 it contains changes that will go into the next commit
 
 | working => staging | staging => commit history | staging => working | working => remove the  changes |
