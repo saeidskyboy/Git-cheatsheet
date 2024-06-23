@@ -73,7 +73,7 @@ it contains changes that will go into the next commit
 Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your large files (files more than 100 Mb), it will replace large files with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise
 | Command | Description |
 | - | - |
-| git config  --global credential.username  <username>    | NOT recommended |
+| git config  --global credential.username  <username>      | NOT recommended |
 | `git config --global credential.helper store`             | GitHub now recommends using a credential helper to manage authentication. This provides a more secure and streamlined way to store your credentials => https://github.com/settings/tokens => create a token then use it instead of password |
 | `git remote add  <remote_name> <url>` | Link a local repository to a remote repository and give a name for this link. i.e. ![Screen Shot 2024-06-10 at 22 10 55](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/65c6f4d9-b523-401d-85f8-a14c90b13c9d) links a local repository to a GitHub repository (located at the url https://github.com/saeidskyboy/DevOps) and gives it a name "update5" |
 | `git remote`                              | List all remote repositories that are linked |
@@ -93,4 +93,12 @@ Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your
 | `git switch -c\|--create lastjump`             | Create "lastjump" branch and will switch to it |
 | `git restore skyboy.js`                        | Undo all changes on the skyboy.js file |
 | `git checkout skyboy.js`                       | Undo all changes on the skyboy.js file |
-| `git merge lastjump`                           | Merge  "lastjump" branch into current branch |
+| `git merge origin/branch2`                     | creates a new merge commit on your local branch that integrates the changes from both branches |
+| `git rebase origin/brnach2`                    | rewrites the history of your local branch, making it look like your commits were created after the latest remote commits |
+
+## Pros and Cons of Merge vs. Rebase:
+| Feature | Merge | Rebase |
+| - | - | - |
+| History:                             | Preserves the entire history, including the branching structure | Creates a linear history, which can be easier to read but loses the context of when branches were created |
+| Conflicts:                           | Resolves conflicts in a single merge commit | Resolves conflicts one commit at a time, which can be more time-consuming but allows for more granular control |
+| Collaboration:                       | Generally safer for collaborative work, as it doesn't rewrite history | Can cause issues if you rebase commits that have already been pushed to a shared repository |
