@@ -68,7 +68,8 @@ it contains changes that will go into the next commit
 | `git rm --force file.txt`                 | Unstage and delete file |
 | `git reset HEAD`                          | Unstage changes, in another word it will reset our env back to the way it was that commit |
 | `git reset --hard HEAD`                   | Unstage and delete changes |
-| `git revert <commit ID>`                      | it will remove all changes that were happened with that particular commit, and will keep the other changes (before/after that commit) i.e. if there are commit 1, 2, 3, 4 and we will do `git revert <commit ID 2>` we only remove all changes which were took in place via commit 2 without touching rest of commits (1, 2, 4) |
+| `git revert <commit ID>`                  | it will remove all changes that were happened with that particular commit, and will keep the other changes (before/after that commit) i.e. if there are commit 1, 2, 3, 4 and we will do `git revert <commit ID 2>` we only remove all changes which were took in place via commit 2 without touching rest of commits (1, 2, 4) |
+| `git cherry-pick <commit ID>`             | it will bring back the reverted changes (exactly opposite of `git revert`) | 
 | `git clean -f\|--force -d`                | Recursively remove untracked files from the working tree |
 | `git clean -f\|--force -d -x`             | Recursively remove untracked and ignored files from the working tree |
 
@@ -93,10 +94,10 @@ Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your
 | `git branch skyboy`                            | Create a new branch with name "skyboy"|
 | `git branch -d skyboy`                         | Deletes "skyboy" branch |
 | `git switch last_sky`                          | Switch to branch "last_sky"|
-| `git switch -c\|--create lastjump`             | Create "lastjump" branch and will switch to it |
+| `git switch -c lastjump`                       | Create "lastjump" branch and will switch to it |
 | `git restore skyboy.js`                        | Undo all changes on the skyboy.js file |
 | `git checkout skyboy.js`                       | Undo all changes on the skyboy.js file |
-| `git merge origin/branch2`                     | creates a new merge commit on your local branch that integrates the changes from both branches |
+| `git merge Y`                                  | If you will be in branch X and execute `git merge Y` branch Y will merge into X (Y will no capture any data/changes from x) |
 | `git rebase origin/brnach2`                    | rewrites the history of your local branch, making it look like your commits were created after the latest remote commits |
 
 ## Pros and Cons of Merge vs. Rebase:
