@@ -39,6 +39,7 @@ Version history = commit history
 | `git show main`                           | Show the last commit in a branch |
 | `git show 5720fdf`                        | Show named commit |
 | `git blame file.txt`                      | See who changed each line and when |
+| `git reflog`                              | it will expose details about our local commit history |
 
    
 ## Configure Name & Email for commits
@@ -65,8 +66,9 @@ it contains changes that will go into the next commit
 | `git mv file1.txt file2.txt`              | Move/rename file |
 | `git rm --cached file.txt`                | Unstage file |
 | `git rm --force file.txt`                 | Unstage and delete file |
-| `git reset HEAD`                          | Unstage changes |
+| `git reset HEAD`                          | Unstage changes, in another word it will reset our env back to the way it was that commit |
 | `git reset --hard HEAD`                   | Unstage and delete changes |
+| `git revert <commit ID>`                      | it will remove all changes that were happened with that particular commit, and will keep the other changes (before/after that commit) i.e. if there are commit 1, 2, 3, 4 and we will do `git revert <commit ID 2>` we only remove all changes which were took in place via commit 2 without touching rest of commits (1, 2, 4) |
 | `git clean -f\|--force -d`                | Recursively remove untracked files from the working tree |
 | `git clean -f\|--force -d -x`             | Recursively remove untracked and ignored files from the working tree |
 
