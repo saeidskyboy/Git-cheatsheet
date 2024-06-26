@@ -31,15 +31,16 @@ Version history = commit history
 | - | - |
 | `git log`                                 | See commit list |
 | `git log --patch`                         | See commit list and line changes |
-| `git log --decorate --graph --oneline`    | See commit visualization |
+| `git log -a --decorate --oneline --graph` | See commit visualization (save it as a "log a dog ;)" |
 | `git log --grep skyboy`                   | See commits with "skyboy" in the message |
+| `git reflog`                              | it will expose details about our local commit history |
 | `git show HEAD`                           | Show the current commit |
 | `git show HEAD^` or `git show HEAD~1`     | Show the previous commit |
 | `git show HEAD^^` or `git show HEAD~2`    | Show the commit going back two commits |
 | `git show main`                           | Show the last commit in a branch |
 | `git show 5720fdf`                        | Show named commit |
 | `git blame file.txt`                      | See who changed each line and when |
-| `git reflog`                              | it will expose details about our local commit history |
+
 
    
 ## Configure Name & Email for commits
