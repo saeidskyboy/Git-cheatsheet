@@ -10,13 +10,12 @@ Version history = commit history
 | - | - |
 | `git init`                                         | Git will start tracking all changes in the current folder |
 | `git status`                                       | Show all changes since the previous commit |
-| `git add <file/folder>`                            | Pick changes to go into next commit |
 | `git add <file>`                                   | Pick individual file |
 | `git add <folder/>`                                | Pick all files inside a folder (and subfolders) |
 | `git add .`                                        | Pick all files (in folder command line is running in) |
 | `git commit  -m "message"`                         | Creates a commit with a message attached |
 | `git commit  -m "message" --amend`                 | Update previous commit instead of creating new one |
-| `git commit -a -m "message"`                       | Add and commit only files which were changed |
+| `git commit -a -m "message"` we can make it short `gacam "message"`                      | Add and commit only files which were changed |
 | `git log`                                          | View the commit history (current and previous versions but next versions, if we role back to a version. i.e. we have 5 versions and we want to role back to version 3 (by `git checkout <commit hash>`, so with `git log` we only will see version 1,2 and 3 |
 
 ## Compare
