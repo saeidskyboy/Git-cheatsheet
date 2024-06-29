@@ -15,7 +15,7 @@ Version history = commit history
 | `git add .`                                        | Pick all files (in folder command line is running in) |
 | `git commit  -m "message"`                         | Creates a commit with a message attached |
 | `git commit  -m "message" --amend`                 | Update previous commit instead of creating new one |
-| `git commit -a -m "message"` we can make it short `gacam "message"`                      | Add and commit only files which were changed |
+| `git commit -a -m "message"` we can make it short `gcam "message"`                      | Add and commit only files which were changed |
 | `git log`                                          | View the commit history (current and previous versions but next versions, if we role back to a version. i.e. we have 5 versions and we want to role back to version 3 (by `git checkout <commit hash>`, so with `git log` we only will see version 1,2 and 3 |
 
 ## Compare
