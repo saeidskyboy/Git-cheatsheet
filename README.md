@@ -1,108 +1,112 @@
-# Git reference
-All commands you need from 0 to pro
-Note:  git commands must be run inside the folder that contains all the code. 
+# Git Reference: From Beginner to Pro
 
-## Creating commits
-In GIt, version = commit
-Version history = commit history
+A comprehensive guide to Git commands and workflows.
 
-| Command | Description |
-| - | - |
-| `git init`                                         | Git will start tracking all changes in the current folder |
-| `git status`                                       | Show all changes since the previous commit |
-| `git add <file>`                                   | Pick individual file |
-| `git add <folder/>`                                | Pick all files inside a folder (and subfolders) |
-| `git add .`                                        | Pick all files (in folder command line is running in) |
-| `git commit  -m "message"`                         | Creates a commit with a message attached |
-| `git commit  -m "message" --amend`                 | Update previous commit instead of creating new one |
-| `git commit -a -m "message"` we can make it short `gcam "message"`                      | Add and commit only files which were changed |
-| `git log`                                          | View the commit history (current and previous versions but next versions, if we role back to a version. i.e. we have 5 versions and we want to role back to version 3 (by `git checkout <commit hash>`, so with `git log` we only will see version 1,2 and 3 |
-
-## Compare
-| Command | Description |
-| - | - |
-| `git diff`                                | See difference between working area and current branch |
-| `git diff HEAD HEAD~2`                    | See difference between te current commit and two previous commits |
-| `git diff main other`                     | See difference between two branches |
-
-## View
-| Command | Description |
-| - | - |
-| `git log`                                 | See commit list |
-| `git log --patch`                         | See commit list and line changes |
-| `git log -a --decorate --oneline --graph` | See commit visualization (save it as a "log a dog ;)" |
-| `git log --grep skyboy`                   | See commits with "skyboy" in the message |
-| `git reflog`                              | it will expose details about our local commit history |
-| `git show HEAD`                           | Show the current commit |
-| `git show HEAD^` or `git show HEAD~1`     | Show the previous commit |
-| `git show HEAD^^` or `git show HEAD~2`    | Show the commit going back two commits |
-| `git show main`                           | Show the last commit in a branch |
-| `git show 5720fdf`                        | Show named commit |
-| `git blame file.txt`                      | See who changed each line and when |
+## Table of Contents
+- [Creating & Inspecting Commits](#creating--inspecting-commits)
+- [Comparing & Viewing Changes](#comparing--viewing-changes)
+- [Configuration](#configuration)
+- [The Staging Area](#the-staging-area)
+- [Working with GitHub](#working-with-github)
+- [Branches & History](#branches--history)
+- [Tips & Tricks](#tips--tricks)
 
 
-   
-## Configure Name & Email for commits
+## Creating & Inspecting Commits
 
-| Command | Description |
-| - | - |
-| `git config --global user.name "skyboy"`                       | Set user name |
-| `git config --globall user.email "skyboy@example.com"`         | set user email |
+| Command                     | Description                                                                                                                                                              |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `git init`                  | Initializes a new Git repository in the current directory.                                                                                                               |
+| `git status`                | Shows the status of files (modified, added, untracked) in the working directory and staging area.                                                                        |
+| `git add <file>`            | Stages a specific file to be included in the next commit.                                                                                                                |
+| `git add <folder>/`         | Stages all files within a specified folder (and its subfolders).                                                                                                         |
+| `git add .`                 | Stages all files in the current directory (and its subfolders).                                                                                                          |
+| `git commit -m "message"`   | Creates a new commit with the specified message.                                                                                                                         |
+| `git commit --amend`        | Modifies the most recent commit, allowing you to change the commit message or add/remove staged changes.                                                                 |
+| `git log`                   | Displays the commit history of the current branch.                                                                                                                       |
+| `git log --oneline --graph` | Shows a compact, graphical representation of the commit history.                                                                                                         |
+| `git show <commit>`         | Displays the details of a specific commit (including changes made).                                                                                                      |
+| `git reflog`                | Shows a history of all actions that modified the tip of the current branch (e.g., commits, merges, rebases).                                                             |
+| `git blame <file>`          | Shows who last modified each line of a file and in which commit.                                                                                                         |
 
-## Switch between stage/working areas
-it contains changes that will go into the next commit
 
-| working => staging | staging => commit history | staging => working | working => remove the  changes |
-| - | - | - | - |
-| `git add  file` | `git commit -m "message"` | `git reset  file` | `git checkout --  file` |
-| `git add  folder/` | |`git reset  folder/` | `git checkout --  folder/` |
-| `git add  .` | |`git reset  .` | `git checkout --  .` |
+## Comparing & Viewing Changes
 
-## Staged Changes
-| Command | Description |
-| - | - |
-| `git add file.txt`                        | Stage file |
-| `git add -p`|--patch file.txt`            | Stage some but not all changes in a file |
-| `git mv file1.txt file2.txt`              | Move/rename file |
-| `git rm --cached file.txt`                | Unstage file |
-| `git rm --force file.txt`                 | Unstage and delete file |
-| `git reset HEAD`                          | Unstage changes, in another word it will reset our env back to the way it was that commit |
-| `git reset --hard HEAD`                   | Unstage and delete changes |
-| `git revert <commit ID>`                  | it will remove all changes that were happened with that particular commit, and will keep the other changes (before/after that commit) i.e. if there are commit 1, 2, 3, 4 and we will do `git revert <commit ID 2>` we only remove all changes which were took in place via commit 2 without touching rest of commits (1, 2, 4) |
-| `git cherry-pick <commit ID>`             | it will bring back the reverted changes (exactly opposite of `git revert`) | 
-| `git clean -f\|--force -d`                | Recursively remove untracked files from the working tree |
-| `git clean -f\|--force -d -x`             | Recursively remove untracked and ignored files from the working tree |
+| Command                   | Description                                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------------------------- |
+| `git diff`                | Shows the differences between the working directory and the staging area.                       |
+| `git diff --staged`       | Shows the differences between the staging area and the last commit.                             |
+| `git diff HEAD~2 HEAD`    | Shows the differences between the current commit and the commit two commits ago.                |
+| `git diff branch1 branch2`| Shows the differences between two branches.                                                     |
 
-## Uploading Code to GitHub
-Install "[Git Large File Storage](https://git-lfs.com)" extension to handle your large files (files more than 100 Mb), it will replace large files with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise
-| Command | Description |
-| - | - |
-| git config  --global credential.username  <username>      | NOT recommended |
-| `git config --global credential.helper store`             | GitHub now recommends using a credential helper to manage authentication. This provides a more secure and streamlined way to store your credentials => https://github.com/settings/tokens => create a token then use it instead of password |
-| `git remote add  <remote_name> <url>` | Link a local repository to a remote repository and give a name for this link. i.e. ![Screen Shot 2024-06-10 at 22 10 55](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/65c6f4d9-b523-401d-85f8-a14c90b13c9d) links a local repository to a GitHub repository (located at the url https://github.com/saeidskyboy/DevOps) and gives it a name "update5" |
-| `git remote`                              | List all remote repositories that are linked |
-| `git remote -v`                           | List all remote repositories with more details |
-| `git remote remove  <remote_name>`        | Removes a link to a remote repository |
-| `git remote remove  origin`               | Removes the link to the remote repository named "origin" |
-| `git lfs track .`                         | this will track all files in current directory |
-| `git push -u <remote_name> <branch>`      | Upload a branch of our git version history to our remote repository. The -u flag (short for --set-upstream) sets up a tracking relationship between your local and remote branches, making future pushes easier.
-| `git push <remote name> <commit name (main/master/HEAD)> --set-upstream` | Sets up a shortcut for this branch and remote repository Next time you are on the  main branch and you run  git push  , it will automatically push the main  branch to  origin ![Screen Shot 2024-06-11 at 15 10 38](https://github.com/saeidskyboy/Git-cheatsheet/assets/97639248/e8a8e426-796b-45c7-bb83-ef62b3ef59a8), with this next time we only need to run `git push` and it memorize "origin mster" and automatically will push it.
 
-## Branches
-| Command | Description |
-| - | - |
-| `git branch skyboy`                            | Create a new branch with name "skyboy"|
-| `git branch -d skyboy`                         | Deletes "skyboy" branch |
-| `git switch last_sky`                          | Switch to branch "last_sky"|
-| `git switch -c lastjump`                       | Create "lastjump" branch and will switch to it |
-| `git restore skyboy.js`                        | Undo all changes on the skyboy.js file |
-| `git checkout skyboy.js`                       | Undo all changes on the skyboy.js file |
-| `git merge Y`                                  | If you will be in branch X and execute `git merge Y` branch Y will merge into X (Y will no capture any data/changes from x) |
-| `git rebase origin/brnach2`                    | rewrites the history of your local branch, making it look like your commits were created after the latest remote commits |
 
-## Pros and Cons of Merge vs. Rebase:
-| Feature | Merge | Rebase |
-| - | - | - |
-| History:                             | Preserves the entire history, including the branching structure | Creates a linear history, which can be easier to read but loses the context of when branches were created |
-| Conflicts:                           | Resolves conflicts in a single merge commit | Resolves conflicts one commit at a time, which can be more time-consuming but allows for more granular control |
-| Collaboration:                       | Generally safer for collaborative work, as it doesn't rewrite history | Can cause issues if you rebase commits that have already been pushed to a shared repository |
+## Configuration
+
+| Command                                 | Description                                                                                                  |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `git config --global user.name "Name"`  | Sets your name for commits you make globally.                                                                |
+| `git config --global user.email "email"`| Sets your email for commits you make globally.                                                               |
+
+
+## The Staging Area (The Index)
+
+The staging area is a buffer between your working directory and the commit history. It allows you to select which changes to include in the next commit.
+
+| Working Directory => Staging Area | Staging Area => Commit History | Staging Area => Working Directory | Remove Changes from Working Directory  |
+| --------------------------------- | ------------------------------ | --------------------------------- | -------------------------------------- |
+| `git add <file>`                  | `git commit -m "message"`      | `git reset <file>`                | `git restore <file>`                   |
+| `git add <folder>/`               |                                | `git reset <folder>/`             | `git restore <folder>/`                |
+| `git add .`                       |                                | `git reset`                       | `git restore .`                        |
+
+**Additional Staged Changes Commands**
+
+| Command                       | Description                                                                                                  |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `git add -p <file>`           | Interactively choose which hunks (parts of changes) to add to the staging area.                              |
+| `git mv <old> <new>`          | Moves or renames a file and stages the change.                                                               |
+| `git rm --cached <file>`      | Removes a file from the staging area but keeps it in the working directory.                                  |
+
+
+## Working with GitHub
+
+| Command                                       | Description                                                                                                                                           |
+| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `git remote add origin <repository_url>`      | Adds a remote repository named "origin" with the specified URL. Typically used when cloning a repository for the first time.                          |
+| `git remote -v`                               | Shows the URLs of your remote repositories.                                                                                                           |
+| `git remote remove origin`                    | Removes the remote repository named "origin".                                                                                                         |
+| `git push -u origin <branch_name>`            | Pushes the specified branch to the "origin" remote and sets up tracking so you can simply use `git push` in the future.                               |
+| `git push --force-with-lease origin <branch>` | A safer alternative to `git push --force`, it will only push if the remote branch hasn't been updated since your last fetch.                          |
+| `git pull origin <branch_name>`               | Fetches changes from the specified branch on the "origin" remote and merges them into your current branch.                                            |
+| `git fetch origin`                            | Downloads all changes from the "origin" remote but doesn't merge them into your branches. Use `git merge origin/<branch>` to merge later if needed.   |
+
+
+## Branches & History
+
+| Command                            | Description                                                                                                    |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `git branch`                       | Lists all local branches.                                                                                      |
+| `git branch <branch_name>`         | Creates a new branch.                                                                                          |
+| `git checkout <branch_name>`       | Switches to the specified branch.                                                                              |
+| `git switch -c <branch_name>`      | Creates a new branch and switches to it.                                                                       |
+| `git merge <branch_name>`          | Merges the specified branch into the current branch.                                                           |
+| `git rebase <branch_name>`         | Rebases the current branch onto the specified branch, creating a linear history.                               |
+| `git revert <commit>`              | Creates a new commit that undoes the changes introduced by the specified commit.                               |
+| `git cherry-pick <commit>`         | Applies the changes from the specified commit onto the current branch.                                         |
+
+## Tips & Tricks
+
+1.  **Fetch + Merge Instead of Pull:** Use `git fetch` to download changes from a remote, then `git merge origin/<branch>` to integrate them manually. This gives you more control and avoids unexpected merges.
+2.  **Check Before You Push:** Always run `git pull origin <branch>` to ensure your local branch is up-to-date before pushing.
+3.  **Local Bare Repositories for Practice:** Create a bare repository (`git init --bare`) to practice Git commands without affecting real projects.
+4.  **Interactive Staging:** Use `git add -p` to selectively stage changes, choosing which hunks (parts of changes) to include in the next commit.
+5.  **Aliases for Efficiency:** Create aliases in your `.gitconfig` file to shorten frequently used commands. For example:
+    ```bash
+    git config --global alias.st status
+    git config --global alias.co checkout
+    ```
+6.  **Record and Reuse Resolutions (rerere):** Enable Git's "rerere" feature (`git config --global rerere.enabled true`) to have Git remember how you resolved merge conflicts and apply those resolutions automatically in the future. 
+
+
+
+Let me know if you'd like any further refinements or additions to this cheat sheet! 
